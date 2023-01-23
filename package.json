@@ -1,0 +1,19 @@
+{
+  "name": "hlc-api_driver_mongodb",
+  "version": "1.0.0",
+  "description": "API with a driver MongoDB",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MJ-Curtido/HLC-API_driver_MongoDB.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MJ-Curtido/HLC-API_driver_MongoDB/issues"
+  },
+  "homepage": "https://github.com/MJ-Curtido/HLC-API_driver_MongoDB#readme"
+}
