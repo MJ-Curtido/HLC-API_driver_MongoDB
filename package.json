@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/MJ-Curtido/HLC-API_driver_MongoDB/issues"
   },
-  "homepage": "https://github.com/MJ-Curtido/HLC-API_driver_MongoDB#readme"
+  "homepage": "https://github.com/MJ-Curtido/HLC-API_driver_MongoDB#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
 }
