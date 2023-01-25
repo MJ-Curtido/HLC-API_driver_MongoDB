@@ -61,7 +61,9 @@ app.get("/buscarcontacto", (req, res) => {
       }
 
       if (result == null) {
-        return res.send({ error: "The contact with the introduced id isn't exist." });
+        return res.send({
+          error: "The contact with the introduced id isn't exist.",
+        });
       }
 
       return res.send(result);
@@ -69,7 +71,39 @@ app.get("/buscarcontacto", (req, res) => {
   );
 });
 
+app.put("/actualizacontacto/:id", (req, res) => {
+  const id = req.params.id;
 
+  if (id == null) {
+    return res.send({ error: "The id is null." });
+  }
+
+  const { nif, name, age, tel } = req.body;
+
+  if (nif == null || name == null || age == null || tel == null)
+    return res.send({ error: "Some property is null." });
+
+  db.collection("contact")
+    .updateMany(
+      {
+        _id: new ObjectID(id),
+      },
+      {
+        $set: {
+          nif: nif,
+          name: name,
+          age: age,
+          tel: tel,
+        },
+      }
+    )
+    .then((result) => {
+      return res.send(result);
+    })
+    .catch((error) => {
+      return res.send({ error: "Unable to update the contact." });
+    });
+});
 
 app.listen(3000, () => {
   console.log("Server is up on port 3000.");
