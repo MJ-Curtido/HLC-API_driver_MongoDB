@@ -86,7 +86,7 @@ app.put("/actualizacontacto/:id", (req, res) => {
   db.collection("contact")
     .updateMany(
       {
-        _id: new ObjectID(id),
+        _id: new ObjectId(id),
       },
       {
         $set: {
@@ -98,10 +98,29 @@ app.put("/actualizacontacto/:id", (req, res) => {
       }
     )
     .then((result) => {
-      return res.send(result);
+      return res.send({ modifiedCount: result.modifiedCount });
     })
     .catch((error) => {
       return res.send({ error: "Unable to update the contact." });
+    });
+});
+
+app.delete("/borracontacto/:id", (req, res) => {
+  const id = req.params.id;
+  console.log(id)
+  if (id == null) {
+    return res.send({ error: "The id is null." });
+  }
+
+  db.collection("contact")
+    .deleteOne({
+      _id: new ObjectId(id),
+    })
+    .then((result) => {
+      return res.send(result);
+    })
+    .catch((error) => {
+      return res.send({ error: "Unable to delete the contact." });
     });
 });
 
